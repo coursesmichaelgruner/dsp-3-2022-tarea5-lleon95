@@ -1,4 +1,5 @@
 #!/usr/bin/env octave-cli
+pkg load signal
 
 [data, fs] = audioread('la_muerte_del_angel_power_noise.wav');
 
@@ -44,6 +45,26 @@ title ("Spectrum Magnitude (Zoomed)");
 hold on;
 
 print("-S1920,1080","-djpg","figure2")
+
+# Plot STFT
+win_size = length(data)/4;
+maxf = 610
+[S, F, T] = specgram(data, win_size, fs);
+
+figure(3)
+for n = 1 : 4
+  subplot(2,2,n);
+  Sx = abs(S(1:win_size * maxf / fs,n));
+  samples = length(Sx)
+  quantum = maxf / samples;
+  xticks = [0:quantum:maxf-quantum];
+  plot(xticks, Sx)
+  xlabel ("Frequency [Hz]");
+  ylabel ("Magnitude");
+endfor
+hold on;
+
+print("-S1920,1080","-djpg","figure3")
 
 waitfor(s);
 waitfor(m);

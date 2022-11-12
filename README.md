@@ -17,7 +17,7 @@ Se determina que es 48 kHz
 Se puede reproducir ejecutando:
 
 ```bash
-./2_complete_dft.m
+./2_3_4_complete_dft.m
 ```
 
 3. **Identifique en el espectro las componentes de frecuencia causadas por la l ́ınea de poder de 60Hz, así como sus posibles armónicos. Para ello, realice una ampliación del espectro en la región de interés pero asegúrese que las unidades se mantengan correcta.**
@@ -27,7 +27,7 @@ Se puede reproducir ejecutando:
 Se puede reproducir ejecutando:
 
 ```bash
-./2_complete_dft.m
+./2_3_4_complete_dft.m
 ```
 
 Se pueden notar las armónicas:
@@ -41,3 +41,14 @@ Se pueden notar las armónicas:
 7. 420 Hz
 
 En general, en electrónica de potencia y líneas de distribución de potencia, las tres primeras armónicas impares son las más problemáticas a nivel y usualmente deben ser atacadas para no perjudicar a la red eléctrica.
+
+4. **Presente la Transformada Discreta de Fourier de Corto Plazo para 4 ventanas distintas de mucho menor tamaño. Identifique las mismas componentes parásitas en dichos espectros**
+
+![STFT](./figure3.jpg)
+
+Se puede reproducir ejecutando:
+
+```bash
+./2_3_4_complete_dft.m
+```
+
