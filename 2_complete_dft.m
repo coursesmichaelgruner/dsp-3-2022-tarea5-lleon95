@@ -31,6 +31,21 @@ title ("Spectrum Phase");
 hold on;
 
 print("-S1920,1080","-djpg","figure1")
+
+# Plot zoomed spectrum
+fig = figure(2)
+quantum_start = 50 / quantum
+quantum_jump = 1 / quantum
+quantum_end = 610 / quantum
+zoomm = plot(xticks(quantum_start:quantum_jump:quantum_end), abs(data_fft(:,1)(quantum_start:quantum_jump:quantum_end)));
+xlabel ("Frequency [Hz]");
+ylabel ("Magnitude");
+title ("Spectrum Magnitude (Zoomed)");
+hold on;
+
+print("-S1920,1080","-djpg","figure2")
+
 waitfor(s);
 waitfor(m);
 waitfor(ph);
+waitfor(zoomm);

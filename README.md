@@ -19,3 +19,25 @@ Se puede reproducir ejecutando:
 ```bash
 ./2_complete_dft.m
 ```
+
+3. **Identifique en el espectro las componentes de frecuencia causadas por la l ́ınea de poder de 60Hz, así como sus posibles armónicos. Para ello, realice una ampliación del espectro en la región de interés pero asegúrese que las unidades se mantengan correcta.**
+
+![Zoomed Spectrum DFT](./figure2.jpg)
+
+Se puede reproducir ejecutando:
+
+```bash
+./2_complete_dft.m
+```
+
+Se pueden notar las armónicas:
+
+1. 60 Hz
+2. 120 Hz
+3. 180 Hz
+4. 240 Hz
+5. 300 Hz
+6. 360 Hz (aunque no tiene mucha amplitud)
+7. 420 Hz
+
+En general, en electrónica de potencia y líneas de distribución de potencia, las tres primeras armónicas impares son las más problemáticas a nivel y usualmente deben ser atacadas para no perjudicar a la red eléctrica.
