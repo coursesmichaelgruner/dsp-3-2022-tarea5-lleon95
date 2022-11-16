@@ -58,4 +58,6 @@ ylabel ("Magnitude");
 title ("Noisy Magnitude (Zoomed)");
 hold on;
 
+print("-S1920,1080","-djpg","figure7");
+
 waitfor(zoomm);

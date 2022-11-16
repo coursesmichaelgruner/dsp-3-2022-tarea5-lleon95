@@ -52,9 +52,9 @@ Se puede reproducir ejecutando:
 ./2_3_4_complete_dft.m
 ```
 
-5. **Proponga un sistema IIR que suprima las componentes de ruido de 60Hz y sus armonicos. Presente su funcion de transferencia ası como su ecuacion de diferencias y su diagrama de polos y ceros**
+5. **Proponga un sistema IIR que suprima las componentes de ruido de 60Hz y sus armonicos. Presente su funcion de transferencia así como su ecuación de diferencias y su diagrama de polos y ceros**
 
-Para el filtrado de armonicos se utilizan los filtros peine, que son filtros de ranura que filtran multiplos de una frecuencia. Uno de los mas populares es el de media movil. Para ello, considere el filtro FIR:
+Para el filtrado de armónicos se utilizan los filtros peine, que son filtros de ranura que filtran multiplos de una frecuencia. Uno de los más populares es el de media móvil. Para ello, considere el filtro FIR:
 
 $$
 y[n] = \frac{1}{M+1} \sum_{k=0}^{M} x[n-k]
@@ -82,16 +82,26 @@ $$
 y[n] = y[n-1] + x[n] - x[n - M - 1]
 $$
 
-El valor de M estara dado por el numero de zeros que se desean agregar. Para ello, se debe tomar en cuenta que uno de los ceros esta en el eje real, mientras que en $2\pi$ va a estar la frecuencia de muestreo: $f_s$. Dado que $f_s = 48000$ Hz y la frecuencia fundamental es $f_o = 60$ Hz. Entonces, para ello, el numero M es cuantas veces cabe la frecuencia fundamental en $f_s$,  $M = 48000 / 60 = 800$.
+El valor de M estara dado por el número de zeros que se desean agregar. Para ello, se debe tomar en cuenta que uno de los ceros esta en el eje real, mientras que en $2\pi$ va a estar la frecuencia de muestreo: $f_s$. Dado que $f_s = 48000$ Hz y la frecuencia fundamental es $f_o = 60$ Hz. Entonces, para ello, el número M es cuantas veces cabe la frecuencia fundamental en $f_s$,  $M = 48000 / 60 = 800$.
 
 ![](figure4.jpg)
 
-6. **Despliegue su respuesta en frecuencia. Para ello utilice alguna herramienta como `freqz`. Asegurese que el eje x tenga unidades de Hz**
+6. **Despliegue su respuesta en frecuencia. Para ello utilice alguna herramienta como `freqz`. Asegúrese que el eje x tenga unidades de Hz**
 
 ![](figure5.jpg)
 
-7. **Filtre la se ̃nal contaminada utilizando alguna herramienta como filter. No implemente el filtrado manualmente mediante la convolucion**
+El filtro tiene forma de la función `sinc(x)`, lo que es augurio para la deformación de la ganancia, maximizando frecuencias bajas y minimizando las altas.
+
+7. **Filtre la señal contaminada utilizando alguna herramienta como filter. No implemente el filtrado manualmente mediante la convolución**
 
 ![](figure6.jpg)
 
-8. **Presente conclusiones (cualitativas) sobre el resultado obtenido. Procure compararlo con la señal de referencia. Si el protipo no fue satisfactorio, presente un analisis donde detalle las posibles causas.**
+La señal filtrada se ve más limpia de componentes de alta frecuencia, esto como consecuencia de la respuesta en frecuencia del filtro seleccionado. Asimismo, se puede ver en la señal filtrada que su magnitud no posee picos en las armónicas, lo que resuelve su atenuación y levanta la señal de audio.
+
+8. **Presente conclusiones (cualitativas) sobre el resultado obtenido. Procure compararlo con la señal de referencia. Si el protipo no fue satisfactorio, presente un análisis donde detalle las posibles causas.**
+
+La señal de salida se nota más ruidosa y continúa teniendo el zumbido leve ocasionado por la señal de potencia eléctrica. Esto denota que el filtro no tiene una respuesta adecuada. 
+
+Desde la perspectiva del espectro, se nota que hay problemas de ganancia en aquellas frecuencias distintas a las de los armónicos, que deforma la señal de salida, cuya información se encapsula en la magnitud.
+
+Ahora bien, la predominancia del ruido de la potencia eléctrica no es tan fuerte como en la señal de entrada, lo que denota filtrado. Sin embargo, otras frecuencias fueron manipuladas y eso degrada la calidad del sonido y no se escucha tan nítido comparado a la señal original sin ruido.
